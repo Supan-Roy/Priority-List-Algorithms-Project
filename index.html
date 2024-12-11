@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Priority List</title>
+    <link rel="icon" href="./Images/todoicon.ico" type="image/icon type">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo-header">
+            <h2>Priority List</h2>
+            <img src="./Images/to-do-list.gif" height="50px" alt="Notebook" />
+        </div>
+        <div class="todo-body">
+            <input type="text" id="todoText" class="todo-input" placeholder="Add your items" />
+            <input type="datetime-local" id="todoDeadline" class="todo-input" />
+            <img src="./Images/plus.gif" alt="Add" id="AddUpdateClick" onclick="CreateToDoItems();" />
+        </div>
+
+        <div class="todo-actions">
+            <input type="text" id="searchText" class="search-input" placeholder="Search tasks"
+                onkeyup="SearchToDoItems()" />
+            <button onclick="DeleteAllCompletedTasks()">Delete All Completed Tasks</button>
+        </div>
+        <h5 id="Alert"></h5>
+        <h6 id="TaskCounter"></h6>
+        <ul id="list-items" class="list-items"></ul>
+    </div>
+    <!-- Modal for confirmation -->
+    <div id="confirmationModal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalMessage"></h3>
+        <div class="modal-buttons">
+          <button id="confirmDelete" onclick="confirmDeleteItem()">Yes</button>
+          <button id="cancelDelete" onclick="closeModal()">No</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

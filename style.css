@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #78c1f3;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px;
+    width: 90%;
+    max-width: 750px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+
+.todo-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.todo-body {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.todo-body input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 15px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.todo-body img {
+    cursor: pointer;
+    border-radius: 40px;
+    height: 55px;
+    width: 55px;
+    padding: 15px;
+    background: limegreen;
+    transition: transform 0.2s ease;
+}
+
+.todo-body img:hover {
+    transform: scale(1.1);
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    font-size: 18px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+    opacity: 0;
+    animation: new-item-animation 0.3s linear forwards;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+
+}
+
+@keyframes new-item-animation {
+    from {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toggleMe {
+    animation: hideMe 5s forwards;
+}
+
+@keyframes hideMe {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+li.deleted-item {
+    animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+    transform-origin: 0% 100%;
+}
+
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotateZ(90deg);
+    }
+}
+
+.todo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.countdown {
+    font-size: 14px;
+    color: #ff5722;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+
+/* Modal buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: #45a049;
+}
+
+.modal-buttons button#cancelDelete {
+    background-color: #f44336;
+}
+
+.modal-buttons button#cancelDelete:hover {
+    background-color: #e53935;
+}
+
+.todo-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.todo-item-controls span.countdown {
+    white-space: nowrap;
+}
+
+.todo-item-text {
+    padding-right: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+
+.todo-controls {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.todo-controls+.todo-controls {
+    margin-left: 10px;
+}
+
+.countdown.on-time {
+    color: rgb(229, 14, 14);
+}
+
+.countdown.overdue {
+    color: red;
+}
+
+.countdown.completed-late {
+    color: orange;
+}
+
+.countdown.completed-on-time {
+    color: green;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .todo-header h2 {
+        font-size: 20px;
+    }
+
+    .todo-body input {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .todo-body img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .todo-item-text {
+        font-size: 16px;
+    }
+
+    .search-input {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .todo-header h2 {
+        font-size: 18px;
+    }
+
+    .todo-body input {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .todo-body img {
+        height: 40px;
+        width: 40px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+
+    .todo-item-text {
+        font-size: 14px;
+    }
+
+    .search-input {
+        font-size: 12px;
+    }
+
+    .modal-content {
+        width: 250px;
+    }
+}
